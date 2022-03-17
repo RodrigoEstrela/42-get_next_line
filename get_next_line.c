@@ -6,7 +6,7 @@
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:29:41 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/03/17 17:00:42 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:48:27 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char *get_nl(int fd, char *buffer, char *str, char *save)
 		buffer[i] = '\0';
 		save = str;
 		str = ft_strjoin(save, buffer);
-		free (save);
+		free(save);
 	}
 	return (str);
 }
@@ -62,16 +62,16 @@ char *get_next_line(int fd)
 	return (save);
 }
 
-int main()
+/*int main()
 {
 	int fd = open("file1.txt", O_RDWR);
-	/*printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 //	printf("%s", get_next_line(fd));
 //	printf("%s\n", get_next_line(fd));
 	printf("%s\n", (char *)0);
 	printf("%s\n", "");
-	get_next_line(fd);i*/
+	get_next_line(fd);
 	char *line;
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
-}
+}*/
