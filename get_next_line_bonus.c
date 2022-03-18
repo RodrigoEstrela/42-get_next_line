@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 13:29:41 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/03/18 15:21:41 by rdas-nev         ###   ########.fr       */
+/*   Created: 2022/03/09 13:29:41 by rdas-nev          #+#    #+#             */
+/*   Updated: 2022/03/18 15:39:05 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -55,7 +55,7 @@ static char	*get_nl(int fd, char *buffer, char *str, char *save)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*buffer;
 	char		*save;
 
@@ -65,9 +65,9 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	save = NULL;
-	str = get_nl(fd, buffer, str, save);
+	str[fd] = get_nl(fd, buffer, str[fd], save);
 	free(buffer);
-	save = ft_strnldup(str);
-	str = ft_exstrchr(str);
+	save = ft_strnldup(str[fd]);
+	str[fd] = ft_exstrchr(str[fd]);
 	return (save);
 }
